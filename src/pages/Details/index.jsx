@@ -1,4 +1,5 @@
 import { Container } from "./style";
+import { Button } from "../../components/button";
 
 export function Details() {
   return (
@@ -10,6 +11,9 @@ export function Details() {
         tempore enim commodi esse fuga vero temporibus iusto fugit maiores
         porro.
       </p>
+
+      <Button />
+
     </Container>
   );
 }
