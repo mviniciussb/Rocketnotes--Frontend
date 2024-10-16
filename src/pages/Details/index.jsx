@@ -12,8 +12,9 @@ export function Details() {
         porro.
       </p>
 
-      <Button />
-
+      <Button title="Entrar" loading />
+      <Button title="Cadastrar" />
+      <Button title="Voltar" />
     </Container>
   );
 }
