@@ -1,2 +1,2 @@
 # Rocketnotes
- Front-end para uma aplicação de cadastro de notas.
+ Front-end for a notes registration application.
