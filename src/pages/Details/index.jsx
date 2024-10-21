@@ -10,7 +10,7 @@ export function Details() {
     <Container>
       <Header />
 
-    <ButtonText title="Excluir a nota" />
+      <ButtonText title="Excluir a nota" />
 
       <Section title="Links uteis">
         <Links>
