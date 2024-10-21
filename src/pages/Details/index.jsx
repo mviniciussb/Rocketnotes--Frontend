@@ -3,11 +3,15 @@ import { Header } from "../../components/header";
 import { Button } from "../../components/button";
 import { Section } from "../../components/section";
 import { Tag } from "../../components/tag";
+import { ButtonText } from "../../components/buttonText";
 
 export function Details() {
   return (
     <Container>
       <Header />
+
+    <ButtonText title="Excluir a nota" />
+
       <Section title="Links uteis">
         <Links>
           <li>
