@@ -8,7 +8,7 @@ export default createGlobalStyle`
     }
     
     body{
-        background-color: ${({theme}) => theme.COLORS.BACKGROUND_800};
+        background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
         color: ${({ theme }) => theme.COLORS.WHITE};
 
         -webkit-font-smoothing: antialiased;
@@ -33,4 +33,28 @@ export default createGlobalStyle`
     button:hover,a:hover{
         filter: brightness(0.9);
     }
+
+    ::-webkit-scrollbar {
+    width: 10px;
+    background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+
+}
+
+    ::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme.COLORS.GRAY_300};
+    border-radius: 10px;
+    
+
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+    background-color: ${({ theme }) => theme.COLORS.GRAY_500};
+}
+
+    ::-webkit-scrollbar-track {
+    background-color: ${({ theme }) => theme.COLORS.BACKGROUND_700};
+        border-radius: 10px;
+
+}
+
 `
