@@ -61,4 +61,11 @@ export const NewNote = styled.button`
     background-color: ${({ theme }) => theme.COLORS.ORANGE};
     font-size: 20px;
     border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    >svg{
+        margin-right: 8px;
+    }
 `

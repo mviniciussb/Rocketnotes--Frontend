@@ -2,6 +2,7 @@ import { Container, Brand, Menu, Search, Content, NewNote } from "./style";
 import { Header } from "../../components/header";
 import {Section} from "../../components/section"
 import { ButtonText } from "../../components/buttonText";
+import { FiPlus } from "react-icons/fi";
 
 
 export function Home() {
@@ -26,7 +27,7 @@ export function Home() {
         <Section title="Minhas notas" />
       </Content>
 
-      <NewNote>+ Criar nota</NewNote>
+      <NewNote><FiPlus/> Criar nota</NewNote>
     </Container>
   );
 }
