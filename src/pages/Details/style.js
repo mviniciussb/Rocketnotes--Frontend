@@ -15,7 +15,7 @@ export const Container = styled.div`
     > main{
         grid-area: content;
         overflow-y: auto;
-        padding: 64px 0;
+        padding: 32px 0 64px;
     }
 `
 
@@ -45,7 +45,7 @@ export const Content = styled.div`
     >h1{
         font-size: 36px;
         font-weight: 500;
-        padding-top: 64px;
+        padding-top: 24px;
     }
 
     >p{

@@ -35,24 +35,24 @@ export default createGlobalStyle`
     }
 
     ::-webkit-scrollbar {
-    width: 10px;
-    background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
-
+        width: 10px;
     }
 
     ::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.COLORS.GRAY_300};
-    border-radius: 10px;
-    
+        background-color: ${({ theme }) => theme.COLORS.BACKGROUND_700};
+        border-radius: 10px;
+        border-left: 2px solid ${({ theme }) => theme.COLORS.GRAY_300};
+        border-right: 2px solid ${({ theme }) => theme.COLORS.GRAY_300};
+
 
     }
 
     ::-webkit-scrollbar-thumb:hover {
-    background-color: ${({ theme }) => theme.COLORS.GRAY_500};
+        background-color: ${({ theme }) => theme.COLORS.GRAY_500};
     }
 
     ::-webkit-scrollbar-track {
-    background-color: ${({ theme }) => theme.COLORS.BACKGROUND_700};
+        background-color: ${({ theme }) => theme.COLORS.GRAY_300};
         border-radius: 10px;
 
     }
