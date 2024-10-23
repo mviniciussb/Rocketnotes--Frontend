@@ -6,7 +6,7 @@ export const Container = styled.div`
 
     display: grid;
     grid-template-columns: 250px auto;
-    grid-template-rows: 105px 128px auto 64px;
+    grid-template-rows: 105px 128px 1fr 64px;
     grid-template-areas: 
     "brand header"
     "menu search"
@@ -17,6 +17,7 @@ export const Container = styled.div`
 `;
 
 export const Brand = styled.div`
+    grid-area: brand;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,22 +35,24 @@ export const Brand = styled.div`
 `
 
 export const Menu = styled.ul`
+    grid-area: menu;
     display: flex;
     flex-direction: column;
     gap: 24px;
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
     text-align: center;
     padding: 64px 0;
-    height: 85vh;
 `
 
 export const Search = styled.div`
-    padding: 24px 64px;
+grid-area: search;
+    padding: 64px 64px 0;
 `
 
 export const Content = styled.div`
     grid-area: content;
-    padding: 64px 64px 0;
+    padding: 36px 64px 0;
+    overflow-y: auto;
 `
 
 export const NewNote = styled.button`
