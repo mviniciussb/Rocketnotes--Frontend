@@ -40,10 +40,7 @@ export const Menu = styled.ul`
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
     text-align: center;
     padding: 64px 0;
-
-
-    
-    
+    height: 85vh;
 `
 
 export const Search = styled.div`
@@ -52,7 +49,7 @@ export const Search = styled.div`
 
 export const Content = styled.div`
     grid-area: content;
-    padding: 24px 64px;
+    padding: 64px 64px 0;
 `
 
 export const NewNote = styled.button`
