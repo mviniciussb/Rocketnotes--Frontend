@@ -39,9 +39,9 @@ export const Form = styled.form`
             margin: 48px 0 24px;
         }
 
-        button:last-child{
+        a{
+            color: ${({theme}) => theme.COLORS.ORANGE};
             margin-top: 124px;
-            color: ${({ theme }) => theme.COLORS.ORANGE};
         }
 `
 export const Background = styled.div`
@@ -53,12 +53,12 @@ export const Background = styled.div`
     backdrop-filter: grayscale(30%);
 
     &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(35, 33, 41, 0.80);
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(35, 33, 41, 0.80);
 }
 `

@@ -3,6 +3,8 @@ import { Input } from "../../components/input";
 import { Button } from "../../components/button";
 import { ButtonText } from "../../components/buttonText";
 import { FiMail, FiLock, FiUser } from "react-icons/fi";
+import { Link } from "react-router-dom";
+
 
 export function SignUp() {
   return (
@@ -17,7 +19,7 @@ export function SignUp() {
         <Input type="text" icon={FiMail} placeholder="E-mail" />
         <Input type="password" icon={FiLock} placeholder="Senha" />
         <Button title="Cadastrar" />
-        <ButtonText title="Voltar para o login" />
+        <Link to="/">Voltar para o login</Link>
       </Form>
     </Container>
   );

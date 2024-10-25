@@ -7,10 +7,17 @@ export const Container = styled.div`
     display: grid;
     grid-template-rows: 105 1fr;
     grid-template-areas: "header" "content";
+
+    .tags{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
 `
 
 export const Main = styled.main`
     overflow-y: auto;
+    grid-area: content;
 `
 
 export const Form = styled.form`
