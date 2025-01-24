@@ -3,8 +3,14 @@ import { Input } from "../../components/input";
 import { Button } from "../../components/button";
 import { FiMail, FiLock } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { MyContext } from "../../myContext.js";
 
 export function SignIn() {
+
+  const data = useContext(MyContext)
+  console.log("Meu contexto -> ", data);
+  
   return (
     <Container>
       <Form>
@@ -17,9 +23,7 @@ export function SignIn() {
         <Input type="password" icon={FiLock} placeholder="Senha" />
         <Button title="Entrar" />
 
-        <Link to="/register">
-        Criar conta
-        </Link>
+        <Link to="/register">Criar conta</Link>
       </Form>
 
       <Background />
@@ -27,4 +31,4 @@ export function SignIn() {
   );
 }
 
-// 
+//
