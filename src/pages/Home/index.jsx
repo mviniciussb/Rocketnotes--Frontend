@@ -5,8 +5,20 @@ import { ButtonText } from "../../components/buttonText";
 import { FiPlus, FiSearch } from "react-icons/fi";
 import { Input } from "../../components/input";
 import { Note } from "../../components/note";
+import { useState, useEffect } from "react";
+import { api } from "../../service/api";
 
 export function Home() {
+  const [tags, setTags] = useState("");
+
+  useEffect(() => {
+    async function fetchTags() {
+      const response = await api.get("/tags");
+      setTags(response.data);
+    }
+    fetchTags();
+  }, []);
+
   return (
     <Container>
       <Brand>
@@ -19,15 +31,13 @@ export function Home() {
         <li>
           <ButtonText title="Todos" />
         </li>
-        <li>
-          <ButtonText title="Frontend" />
-        </li>
-        <li>
-          <ButtonText title="Node" />
-        </li>
-        <li>
-          <ButtonText title="React" />
-        </li>
+
+        {tags &&
+          tags.map((tag) => (
+            <li key={tag.id}>
+              <ButtonText title={tag.name} />
+            </li>
+          ))}
       </Menu>
 
       <Search>

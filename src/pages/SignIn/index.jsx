@@ -1,6 +1,6 @@
 import { Container, Form, Background } from "./style";
 import { Input } from "../../components/input";
-import { Button } from "../../components/button";
+import { Button } from "../../components/button.js";
 import { FiMail, FiLock } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/auth.jsx";
@@ -9,12 +9,11 @@ import { useState } from "react";
 export function SignIn() {
   const { signIn } = useAuth();
 
-  const [email, setEmail] = useState("")
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-
-  function handleSignIn(){
-    signIn({email, password})
+  function handleSignIn() {
+    signIn({ email, password });
   }
 
   return (

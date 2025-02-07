@@ -16,58 +16,57 @@ export function New() {
   const [tags, setTags] = useState([]);
   const [newTag, setNewTag] = useState("");
 
-  const [title, setTitle] = useState("")
-  const [description, setDescription] = useState("")
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
 
-  const navigate = useNavigate()
-
+  const navigate = useNavigate();
 
   function handleAddLink() {
     if (newLink.trim() === "") return;
-    setLinks(prevState => [...prevState, newLink]);
+    setLinks((prevState) => [...prevState, newLink]);
     setNewLink("");
   }
 
-  function handleRemoveLink(deleted){
-    setLinks(prevState => prevState.filter(link => link !== deleted))
+  function handleRemoveLink(deleted) {
+    setLinks((prevState) => prevState.filter((link) => link !== deleted));
   }
 
-  function handleAtTag(){
-    setTags(prevState => [...prevState, newTag])
-    setNewTag("")
+  function handleAtTag() {
+    setTags((prevState) => [...prevState, newTag]);
+    setNewTag("");
   }
 
-  function handleRemoveTag(deleted){
-    setTags(prevState => prevState.filter(tag => tag !== deleted))
+  function handleRemoveTag(deleted) {
+    setTags((prevState) => prevState.filter((tag) => tag !== deleted));
   }
 
-
-  async function handleNewNote(){
-
-    if(!title){
-      return alert("Você deixou a nota sem título.")
+  async function handleNewNote() {
+    if (!title) {
+      return alert("Você deixou a nota sem título.");
     }
 
-     if(newLink){
-      return alert("Você deixou um link no campo para adicionar, mas não clicou em adicionar.")
+    if (newLink) {
+      return alert(
+        "Você deixou um link no campo para adicionar, mas não clicou em adicionar."
+      );
     }
 
-    if(newTag){
-      return alert("Você deixou uma tag no campo para adicionar, mas não clicou em adicionar.")
+    if (newTag) {
+      return alert(
+        "Você deixou uma tag no campo para adicionar, mas não clicou em adicionar."
+      );
     }
 
-   
     await api.post("/notes", {
       title,
       description,
       tags,
-      links
-    })
+      links,
+    });
 
-    alert("Nota criada com sucesso!")
-    navigate("/")
+    alert("Nota criada com sucesso!");
+    navigate("/");
   }
-
 
   return (
     <Container>
@@ -80,44 +79,55 @@ export function New() {
             <Link to="/">Voltar</Link>
           </header>
 
-          <Input placeholder="Título" type="text" onChange={e => setTitle(e.target.value)}/>
-          <TextArea placeholder="Observações" onChange={e => setDescription(e.target.value)}/>
+          <Input
+            placeholder="Título"
+            type="text"
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <TextArea
+            placeholder="Observações"
+            onChange={(e) => setDescription(e.target.value)}
+          />
 
           <Section title="Links úteis">
-            {
-              links.map((link, index) => (
-                <NoteItem key={String(index)} value={link} onClick={() => handleRemoveLink(link)} />
-              ))
-            }
-            <NoteItem 
-              value={newLink} 
-              isNew 
-              placeholder="Novo link" 
-              onChange={e => setNewLink(e.target.value)} 
-              onClick={handleAddLink} 
+            {links.map((link, index) => (
+              <NoteItem
+                key={String(index)}
+                value={link}
+                onClick={() => handleRemoveLink(link)}
+              />
+            ))}
+            <NoteItem
+              value={newLink}
+              isNew
+              placeholder="Novo link"
+              onChange={(e) => setNewLink(e.target.value)}
+              onClick={handleAddLink}
             />
           </Section>
 
           <Section title="Marcadores">
             <div className="tags">
-              {
-                tags.map((tag, index) => (
-                <NoteItem value={tag} key={String(index)} onClick={() => {handleRemoveTag(tag)}} />
-                ))
-              
-              }
-              <NoteItem 
+              {tags.map((tag, index) => (
+                <NoteItem
+                  value={tag}
+                  key={String(index)}
+                  onClick={() => {
+                    handleRemoveTag(tag);
+                  }}
+                />
+              ))}
+              <NoteItem
                 value={newTag}
-                isNew 
+                isNew
                 placeholder="Novo marcador"
-                onChange={e => setNewTag(e.target.value)}
+                onChange={(e) => setNewTag(e.target.value)}
                 onClick={handleAtTag}
-                
               />
             </div>
           </Section>
 
-          <Button title="Salvar" onClick={handleNewNote}/>
+          <Button title="Salvar" onClick={handleNewNote} />
         </Form>
       </Main>
     </Container>
