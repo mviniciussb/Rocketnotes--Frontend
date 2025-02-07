@@ -1,6 +1,6 @@
-import { Container, Form, Background } from "./style";
-import { Input } from "../../components/input";
-import { Button } from "../../components/button.js";
+import { Container, Form, Background } from "./style.js";
+import { Input } from "../../components/input/index.jsx";
+import { Button } from "../../components/button/index.jsx";
 import { FiMail, FiLock } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/auth.jsx";
