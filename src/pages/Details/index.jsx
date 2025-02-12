@@ -18,6 +18,15 @@ export function Details() {
     navigate("/")
   }
 
+  async function handleRemove(){
+    const confirm = window.confirm("Deseja realmente remover a nota?")
+
+    if(confirm){
+      await api.delete(`/notes/${params.id}`)
+      navigate("/")
+    }
+  }
+
   useEffect(() => {
     console.log("ID recebido:", params.id);
 
@@ -41,16 +50,18 @@ export function Details() {
       {data && (
         <main>
           <Content>
-            <ButtonText title="Excluir a nota" />
+            <ButtonText title="Excluir a nota" onClick={handleRemove} />
             <h1>{data.title}</h1>
             <p>{data.description}</p>
 
             {data.links && (
               <Section title="Links uteis">
                 <Links>
-                  {data.links.map(link => (
+                  {data.links.map((link) => (
                     <li key={String(link.id)}>
-                      <a href={link.url} target="_blank">{link.url}</a>
+                      <a href={link.url} target="_blank">
+                        {link.url}
+                      </a>
                     </li>
                   ))}
                 </Links>
@@ -59,7 +70,7 @@ export function Details() {
 
             {data.tags && (
               <Section title="Marcadores">
-                {data.tags.map(tag => (
+                {data.tags.map((tag) => (
                   <Tag key={String(tag.id)} title={tag.name} />
                 ))}
               </Section>
