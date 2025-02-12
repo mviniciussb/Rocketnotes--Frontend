@@ -31,7 +31,7 @@ export function Home() {
   }
 
   function handleDetails(id) {
-    navigate(`/detail/${id}`);
+    navigate(`/details/${id}`);
   }
 
   useEffect(() => {

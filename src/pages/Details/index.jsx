@@ -4,47 +4,70 @@ import { Button } from "../../components/button";
 import { Section } from "../../components/section";
 import { Tag } from "../../components/tag";
 import { ButtonText } from "../../components/buttonText";
+import { useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { api } from "../../service/api";
 
 export function Details() {
+  const [data, setData] = useState(null);
+
+  const params = useParams();
+  const navigate = useNavigate()
+
+  function handleBack(){
+    navigate("/")
+  }
+
+  useEffect(() => {
+    console.log("ID recebido:", params.id);
+
+    async function fetchNote() {
+      try {
+        const response = await api.get(`/notes/${params.id}`);
+        console.log("Dados recebidos:", response.data);
+        setData(response.data);
+      } catch (error) {
+        console.error("Erro ao buscar a nota:", error);
+      }
+    }
+
+    fetchNote();
+  }, [params.id]);
+
   return (
     <Container>
       <Header />
 
-      <main>
-        <Content>
-          <ButtonText title="Excluir a nota" />
-          <h1>Introdução ao React</h1>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus
-            PageMaker including versions of Lorem Ipsum.
-          </p>
+      {data && (
+        <main>
+          <Content>
+            <ButtonText title="Excluir a nota" />
+            <h1>{data.title}</h1>
+            <p>{data.description}</p>
 
-          <Section title="Links uteis">
-            <Links>
-              <li>
-                <a href="#">https://www.rocketseat.com.br/</a>
-              </li>
-              <li>
-                <a href="#">https://www.rocketseat.com.br/</a>
-              </li>
-            </Links>
-          </Section>
+            {data.links && (
+              <Section title="Links uteis">
+                <Links>
+                  {data.links.map(link => (
+                    <li key={String(link.id)}>
+                      <a href={link.url} target="_blank">{link.url}</a>
+                    </li>
+                  ))}
+                </Links>
+              </Section>
+            )}
 
-          <Section title="Marcadores">
-            <Tag title="express" />
-            <Tag title="nodejs" />
-          </Section>
-
-          <Button title="Voltar" />
-        </Content>
-      </main>
+            {data.tags && (
+              <Section title="Marcadores">
+                {data.tags.map(tag => (
+                  <Tag key={String(tag.id)} title={tag.name} />
+                ))}
+              </Section>
+            )}
+            <Button title="Voltar" onClick={handleBack} />
+          </Content>
+        </main>
+      )}
     </Container>
   );
 }

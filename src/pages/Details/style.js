@@ -52,5 +52,7 @@ export const Content = styled.div`
         font-size: 16px;
         margin-top: 16px;
         text-align: justify;
+        white-space: pre-wrap;
+        word-wrap: break-word;
     }
 `
