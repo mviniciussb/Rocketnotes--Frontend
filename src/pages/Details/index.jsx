@@ -12,18 +12,18 @@ export function Details() {
   const [data, setData] = useState(null);
 
   const params = useParams();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  function handleBack(){
-    navigate("/")
+  function handleBack() {
+    navigate(-1);
   }
 
-  async function handleRemove(){
-    const confirm = window.confirm("Deseja realmente remover a nota?")
+  async function handleRemove() {
+    const confirm = window.confirm("Deseja realmente remover a nota?");
 
-    if(confirm){
-      await api.delete(`/notes/${params.id}`)
-      navigate("/")
+    if (confirm) {
+      await api.delete(`/notes/${params.id}`);
+      navigate(-1);
     }
   }
 
